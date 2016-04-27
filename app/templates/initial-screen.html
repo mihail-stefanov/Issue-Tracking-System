@@ -1,0 +1,25 @@
+<div class="template">
+    <div ng-switch="initialScreenChoice">
+       
+        <div ng-switch-when="welcome">
+            <h2>Welcome to the Issue Tracket System!</h2>
+            <h3>Please choose an option:</h3>
+            <p><button ng-click="showLoginForm()">Login</button></p>
+            <p><button ng-click="showRegisterForm()">Register</button></p>
+        </div>
+        
+        <div ng-switch-when="login">
+            <h2>Login:</h2>
+            <p>Are you a new user? <button ng-click="showRegisterForm()">Register</button></p>
+        </div>
+        
+        <div ng-switch-when="register">
+            <h2>Register</h2>
+            <p>Do you already have an account? <button ng-click="showLoginForm()">Login</button></p>
+        </div>
+        
+        <div ng-switch-when="dashboard">
+            
+        </div>
+    </div>
+</div>

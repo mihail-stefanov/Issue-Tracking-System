@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="issueTrackingSystemApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Issue Tracking System</title>
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+
+</head>
+
+<body>
+
+    <div id="container">
+
+        <header class="w3-container w3-theme w3-padding w3-indigo">
+            <div class="w3-center">
+                <h1>Issue Tracking System</h1>
+            </div>
+        </header>
+        
+        <div class="w3-container" ng-controller="AppController">
+        
+            <div ng-view></div>
+        
+        </div>
+        
+        <footer class="w3-container w3-theme w3-padding w3-indigo">
+            <div class="w3-center">
+                <h5>Soft Uni Project - 2016</h5>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="scripts/app.js"></script>
+    
+    <script src="scripts/controllers/app-controller.js"></script>
+    <script src="scripts/controllers/initial-screen-controller.js"></script>
+    
+    <script src="scripts/services/authorisation-service.js"></script>
+
+</body>
+
+</html>
