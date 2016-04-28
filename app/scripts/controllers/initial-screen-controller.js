@@ -17,5 +17,5 @@ angular.module('issueTrackingSystemApp')
         $scope.showRegisterForm = function() {
             $scope.initialScreenChoice = $scope.initialScreenOptions.register;
         };
-
+        
 }]);

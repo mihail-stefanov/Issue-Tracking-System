@@ -1,25 +1,83 @@
 <div class="template">
     <div ng-switch="initialScreenChoice">
-       
+
         <div ng-switch-when="welcome">
             <h2>Welcome to the Issue Tracket System!</h2>
             <h3>Please choose an option:</h3>
-            <p><button ng-click="showLoginForm()">Login</button></p>
-            <p><button ng-click="showRegisterForm()">Register</button></p>
+            <p>
+                <button ng-click="showLoginForm()" class="w3-btn w3-indigo">Login</button>
+            </p>
+            <p>
+                <button ng-click="showRegisterForm()" class="w3-btn w3-indigo">Register</button>
+            </p>
         </div>
-        
+
         <div ng-switch-when="login">
-            <h2>Login:</h2>
-            <p>Are you a new user? <button ng-click="showRegisterForm()">Register</button></p>
+            <h2>Login</h2>
+
+            <form name="loginForm">
+                <p>
+                    <label for="username">
+                        Username: <br>
+                        <input type="email" id="username" name="email" required>
+                    </label>
+                </p>
+
+                <p>
+                    <label for="password">
+                        Password: <br>
+                        <input type="password" id="password" required>
+                    </label>
+                </p>
+
+                <p>
+                    <input type="submit" value="Login" class="w3-btn w3-indigo">
+                </p>
+            </form>
+
+            <p class="w3-small">Are you a new user?
+                <button ng-click="showRegisterForm()" class="w3-btn w3-grey">Register</button>
+            </p>
         </div>
-        
+
         <div ng-switch-when="register">
             <h2>Register</h2>
-            <p>Do you already have an account? <button ng-click="showLoginForm()">Login</button></p>
+
+            <form name="registerForm">
+                <p>
+                    <label for="email">
+                        Email: <br>
+                        <input type="email" id="email" name="email" required>
+                    </label>
+                </p>
+
+                <p>
+                    <label for="password">
+                        Password: <br>
+                        <input type="password" id="password" required>
+                    </label>
+                </p>
+                
+                <p>
+                    <label for="confirmPassword">
+                        Confirm password: <br>
+                        <input type="password" id="confirmPassword" required>
+                    </label>
+                </p>
+
+                <p>
+                    <input type="submit" value="Register" class="w3-btn w3-indigo">
+                </p>
+            </form>
+
+            <p class="w3-small">Do you already have an account?
+                <button ng-click="showLoginForm()" class="w3-btn w3-grey">Login</button>
+            </p>
         </div>
-        
+
         <div ng-switch-when="dashboard">
-            
+
         </div>
+
     </div>
 </div>
