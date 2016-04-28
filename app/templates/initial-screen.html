@@ -12,26 +12,26 @@
             </p>
         </div>
 
-        <div ng-switch-when="login">
+        <div ng-switch-when="login" ng-controller="LoginController">
             <h2>Login</h2>
 
             <form name="loginForm">
                 <p>
                     <label for="username">
                         Username: <br>
-                        <input type="email" id="username" name="email" required>
+                        <input type="email" id="username" name="email" ng-model="userData.Username" required>
                     </label>
                 </p>
 
                 <p>
                     <label for="password">
                         Password: <br>
-                        <input type="password" id="password" required>
+                        <input type="password" id="password" ng-model="userData.Password" required>
                     </label>
                 </p>
 
                 <p>
-                    <input type="submit" value="Login" class="w3-btn w3-indigo">
+                    <input type="submit" value="Login" ng-click="login(userData)" class="w3-btn w3-indigo">
                 </p>
             </form>
 
@@ -76,7 +76,13 @@
         </div>
 
         <div ng-switch-when="dashboard">
-
+            <h2>Dashboard</h2>
+            
+            <h3>Welcome, {{userData.Username}}!</h3>
+            
+            <p class="w3-small">
+                <button ng-click="logout()" class="w3-btn w3-grey">Logout</button>
+            </p>
         </div>
 
     </div>

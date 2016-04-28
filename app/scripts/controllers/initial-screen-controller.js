@@ -1,21 +1,21 @@
 angular.module('issueTrackingSystemApp')
-    .controller('InitialScreenController', ['$scope', function ($scope) {
+    .controller('InitialScreenController', ['$rootScope', function ($rootScope) {
 
-        $scope.initialScreenOptions = {
+        $rootScope.initialScreenOptions = {
             welcome: 'welcome',
             login: 'login',
             register: 'register',
             dashboard: 'dashboard'
         }; // TODO: Could be moved as a constant
 
-        $scope.initialScreenChoice = $scope.initialScreenOptions.welcome;
+        $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.welcome;
         
-        $scope.showLoginForm = function() {
-            $scope.initialScreenChoice = $scope.initialScreenOptions.login;
+        $rootScope.showLoginForm = function() {
+            $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.login;
         };
         
-        $scope.showRegisterForm = function() {
-            $scope.initialScreenChoice = $scope.initialScreenOptions.register;
+        $rootScope.showRegisterForm = function() {
+            $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.register;
         };
         
 }]);
