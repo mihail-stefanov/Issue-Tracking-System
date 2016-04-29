@@ -1,3 +1,3 @@
-angular.module('issueTrackingSystemApp').controller("AppController", ["$scope", function($scope) {
-    
+angular.module('issueTrackingSystemApp').controller('AppController', ['$scope', 'authorisationService', function ($scope, authorisationService) {
+    $scope.authorisationService = authorisationService;
 }]);

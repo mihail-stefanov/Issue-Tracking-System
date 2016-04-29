@@ -1,5 +1,5 @@
 angular.module('issueTrackingSystemApp')
-    .controller('InitialScreenController', ['$rootScope', function ($rootScope) {
+    .controller('InitialScreenController', ['$rootScope', 'authorisationService', function ($rootScope, authorisationService) {
 
         $rootScope.initialScreenOptions = {
             welcome: 'welcome',
@@ -8,7 +8,8 @@ angular.module('issueTrackingSystemApp')
             dashboard: 'dashboard'
         }; // TODO: Could be moved as a constant
 
-        $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.welcome;
+        $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.welcome; 
+        // TODO: to be made conditional if using localStorage;
         
         $rootScope.showLoginForm = function() {
             $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.login;
@@ -18,4 +19,8 @@ angular.module('issueTrackingSystemApp')
             $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.register;
         };
         
+        $rootScope.logout = function() {
+            authorisationService.logout();
+            $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.welcome;
+        };
 }]);

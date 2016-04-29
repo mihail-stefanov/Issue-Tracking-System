@@ -4,7 +4,7 @@ angular.module('issueTrackingSystemApp')
             authorisationService.login(userData,
                 function () {
                     console.log('User logged in!');
-                    $rootScope.userData = userData;
+                    console.log(sessionStorage['currentUser']);
                     $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.dashboard;
                 },
                 function () {

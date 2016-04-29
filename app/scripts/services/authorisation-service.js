@@ -35,6 +35,13 @@ angular.module('issueTrackingSystemApp')
                     // TODO: Log in user on success
                 })
             },
+            
+            getCurrentUser: function() {
+                var loggedInUser = sessionStorage['currentUser'];
+                if (loggedInUser) {
+                    return JSON.parse(loggedInUser);
+                }
+            },
 
             logout: function () {
                 delete sessionStorage['currentUser'];
