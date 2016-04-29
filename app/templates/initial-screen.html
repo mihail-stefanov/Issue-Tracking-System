@@ -1,6 +1,8 @@
-<div class="template">
+<div class="template" ng-controller="AuthenticationController">
     <div ng-switch="initialScreenChoice">
 
+       
+       
         <div ng-switch-when="welcome">
             <h2>Welcome to the Issue Tracket System!</h2>
             <h3>Please choose an option:</h3>
@@ -12,26 +14,28 @@
             </p>
         </div>
 
-        <div ng-switch-when="login" ng-controller="LoginController">
+       
+       
+        <div ng-switch-when="login">
             <h2>Login</h2>
 
             <form name="loginForm">
                 <p>
                     <label for="username">
                         Username: <br>
-                        <input type="email" id="username" name="email" ng-model="userData.Username" required>
+                        <input type="email" id="username" name="email" ng-model="userLoginData.Username" required>
                     </label>
                 </p>
 
                 <p>
                     <label for="password">
                         Password: <br>
-                        <input type="password" id="password" ng-model="userData.Password" required>
+                        <input type="password" id="password" ng-model="userLoginData.Password" required>
                     </label>
                 </p>
 
                 <p>
-                    <input type="submit" value="Login" ng-click="login(userData)" class="w3-btn w3-indigo">
+                    <input type="submit" value="Login" ng-click="login(userLoginData)" class="w3-btn w3-indigo">
                 </p>
             </form>
 
@@ -40,6 +44,8 @@
             </p>
         </div>
 
+       
+       
         <div ng-switch-when="register">
             <h2>Register</h2>
 
@@ -47,26 +53,26 @@
                 <p>
                     <label for="email">
                         Email: <br>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" ng-model="userRegisterData.Email" required>
                     </label>
                 </p>
 
                 <p>
                     <label for="password">
                         Password: <br>
-                        <input type="password" id="password" required>
+                        <input type="password" id="password" ng-model="userRegisterData.Password" required>
                     </label>
                 </p>
                 
                 <p>
                     <label for="confirmPassword">
                         Confirm password: <br>
-                        <input type="password" id="confirmPassword" required>
+                        <input type="password" id="confirmPassword" ng-model="userRegisterData.ConfirmPassword" required>
                     </label>
                 </p>
 
                 <p>
-                    <input type="submit" value="Register" class="w3-btn w3-indigo">
+                    <input type="submit" value="Register" ng-click="register(userRegisterData)" class="w3-btn w3-indigo">
                 </p>
             </form>
 
@@ -75,6 +81,8 @@
             </p>
         </div>
 
+       
+       
         <div ng-switch-when="dashboard">
             <h2>Dashboard</h2>
             

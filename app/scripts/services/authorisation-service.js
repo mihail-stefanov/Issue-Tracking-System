@@ -2,14 +2,14 @@ angular.module('issueTrackingSystemApp')
     .factory('authorisationService', ['$http', '$httpParamSerializerJQLike', function ($http, $httpParamSerializerJQLike) {
         return {
 
-            login: function (userData, success, error) {
+            login: function (userLoginData, success, error) {
 
-                userData.grant_type = 'password';
+                userLoginData.grant_type = 'password';
 
                 var httpRequest = {
                     method: 'POST',
                     url: 'http://softuni-issue-tracker.azurewebsites.net/api/Token',
-                    data: $httpParamSerializerJQLike(userData),
+                    data: $httpParamSerializerJQLike(userLoginData),
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
@@ -24,16 +24,16 @@ angular.module('issueTrackingSystemApp')
                     .error(error);
             },
 
-            register: function (userData, success, error) {
+            register: function (userRegisterData, success, error) {
                 var httpRequest = {
                     method: 'POST',
                     url: 'http://softuni-issue-tracker.azurewebsites.net/api/Account/Register',
-                    data: userData
+                    data: userRegisterData
                 };
 
                 $http(httpRequest).success(function (response) {
-                    // TODO: Log in user on success
-                })
+                    success();
+                }).error(error);
             },
             
             getCurrentUser: function() {
