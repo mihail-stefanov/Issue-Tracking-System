@@ -1,7 +1,7 @@
 <div class="template" ng-controller="AuthenticationController">
     <div ng-switch="initialScreenChoice">
 
-       
+<!--       WELCOME SCREEN       -->
        
         <div ng-switch-when="welcome">
             <h2>Welcome to the Issue Tracket System!</h2>
@@ -14,7 +14,7 @@
             </p>
         </div>
 
-       
+<!--       LOGIN SCREEN       -->
        
         <div ng-switch-when="login">
             <h2>Login</h2>
@@ -44,7 +44,7 @@
             </p>
         </div>
 
-       
+<!--       REGISTER SCREEN       -->
        
         <div ng-switch-when="register">
             <h2>Register</h2>
@@ -81,12 +81,50 @@
             </p>
         </div>
 
+<!--       DASHBOARD SCREEN       -->
        
-       
-        <div ng-switch-when="dashboard">
+        <div ng-switch-when="dashboard" ng-controller="DashboardController">
             <h2>Dashboard</h2>
             
             <h3>Welcome, {{authorisationService.getCurrentUser().userName}}!</h3>
+            
+            <div class="w3-row">
+                
+                <div class="w3-quarter w3-container w3-margin">
+                    <header class="w3-container w3-dark-grey">
+                        <h3>Affiliated projects</h3>    
+                    </header>
+                    
+                    <table class="w3-container w3-table w3-bordered w3-striped w3-border">
+                        <tr ng-repeat="project in projects">
+                            <td>{{project}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="w3-twothird w3-container w3-margin">
+                    <header class="w3-container w3-dark-grey">
+                        <h3>Assigned Issues</h3>
+                    </header>
+                    
+                    <table class="w3-container w3-table w3-bordered w3-striped w3-border">
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Project</th>
+                            <th>Due date</th>
+                        </tr>
+                        <tr ng-repeat="issue in issues">
+                            <td>{{issue.title}}</td>
+                            <td>{{issue.description}}</td>
+                            <td>{{issue.project}}</td>
+                            <td>{{issue.dueDate}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+
             
             <p class="w3-small">
                 <button ng-click="logout()" class="w3-btn w3-grey">Logout</button>
