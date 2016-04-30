@@ -91,11 +91,10 @@
             <div class="w3-row">
                 
                 <div class="w3-quarter w3-container w3-margin">
-                    <header class="w3-container w3-dark-grey">
-                        <h3>Affiliated projects</h3>    
-                    </header>
-                    
-                    <table class="w3-container w3-table w3-bordered w3-striped w3-border">
+                    <table class="w3-container w3-table w3-bordered w3-striped w3-card-4">
+                        <tr>
+                            <th class="w3-container w3-dark-grey"><h3>Affiliated projects</h3></th>
+                        </tr>
                         <tr ng-repeat="project in projects">
                             <td>{{project}}</td>
                         </tr>
@@ -103,11 +102,11 @@
                 </div>
 
                 <div class="w3-twothird w3-container w3-margin">
-                    <header class="w3-container w3-dark-grey">
-                        <h3>Assigned Issues</h3>
-                    </header>
                     
-                    <table class="w3-container w3-table w3-bordered w3-striped w3-border">
+                    <table class="w3-container w3-table w3-bordered w3-striped w3-card-4">
+                        <tr>
+                            <th colspan="4" class="w3-container w3-dark-grey"><h3>Assigned Issues</h3></th>
+                        </tr>
                         <tr>
                             <th>Title</th>
                             <th>Description</th>
@@ -121,6 +120,23 @@
                             <td>{{issue.dueDate}}</td>
                         </tr>
                     </table>
+                    
+                    <br>
+                    
+                    <div class="w3-center">
+                        <ul class="w3-pagination w3-border w3-round">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">‹</a></li>
+                            <li><a class="w3-dark-grey" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">›</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                    
                 </div>
             </div>
             
