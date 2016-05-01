@@ -8,7 +8,12 @@ angular.module('issueTrackingSystemApp')
             dashboard: 'dashboard'
         }; // TODO: Could be moved as a constant
 
-        $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.welcome; 
+        if (sessionStorage['currentUser'] == undefined) {
+            $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.welcome; 
+        } else {
+            $rootScope.initialScreenChoice = $rootScope.initialScreenOptions.dashboard;
+        }
+        
         // TODO: to be made conditional if using localStorage;
         
         $rootScope.showLoginForm = function() {
