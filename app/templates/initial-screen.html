@@ -4,7 +4,7 @@
 <!--       WELCOME SCREEN       -->
        
         <div ng-switch-when="welcome">
-            <h2>Welcome to the Issue Tracket System!</h2>
+            <h2>Welcome to the Issue Tracking System!</h2>
             <h3>Please choose an option:</h3>
             <p>
                 <button ng-click="showLoginForm()" class="w3-btn w3-indigo">Login</button>
@@ -95,8 +95,8 @@
                         <tr>
                             <th class="w3-container w3-dark-grey"><h3>Affiliated projects</h3></th>
                         </tr>
-                        <tr ng-repeat="project in projects">
-                            <td>{{project}}</td>
+                        <tr ng-repeat="project in projectsCollection.Projects">
+                            <td>{{project.Name}}</td>
                         </tr>
                     </table>
                 </div>

@@ -1,7 +1,11 @@
 angular.module('issueTrackingSystemApp')
-    .controller('DashboardController', ['$scope', 'authorisationService', function ($scope, authorisationService) {
+    .controller('DashboardController', ['$scope', 'authorisationService', 'projectService', function ($scope, authorisationService, projectService) {
         
-        $scope.projects = ['sample project 1', 'sample project 2', 'another sample project'];
+        $scope.projectsCollection = projectService.getProjects({
+            filter: '',
+            pageSize: '1000',
+            pageNumber: '1'
+        });
         
         $scope.issues = [
             {

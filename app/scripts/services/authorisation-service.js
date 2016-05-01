@@ -40,7 +40,13 @@ angular.module('issueTrackingSystemApp')
                 var loggedInUser = sessionStorage['currentUser'];
                 if (loggedInUser) {
                     return JSON.parse(loggedInUser);
-                }
+                } // TODO: Improve variable naming
+            },
+            
+            getAuthorisationToken: function() {
+                var loggedInUser = this.getCurrentUser();
+                var authorisationToken = 'Bearer ' + loggedInUser.access_token;
+                return authorisationToken;
             },
 
             logout: function () {
