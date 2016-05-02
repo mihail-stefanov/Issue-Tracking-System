@@ -95,8 +95,8 @@
                         <tr>
                             <th class="w3-container w3-dark-grey"><h3>Affiliated projects</h3></th>
                         </tr>
-                        <tr ng-repeat="project in projectsCollection.Projects">
-                            <td>{{project.Name}}</td>
+                        <tr ng-repeat="(id, name) in myProjectsCollection">
+                            <td>{{name}}</td>
                         </tr>
                     </table>
                 </div>
