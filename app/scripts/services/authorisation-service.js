@@ -38,7 +38,7 @@ angular.module('issueTrackingSystemApp')
             
             getCurrentUser: function() {
                 var loggedInUser = sessionStorage['currentUser'];
-                if (loggedInUser) {
+                if (loggedInUser != undefined) {
                     return JSON.parse(loggedInUser);
                 } // TODO: Improve variable naming
             },

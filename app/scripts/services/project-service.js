@@ -4,10 +4,7 @@ angular.module('issueTrackingSystemApp')
         var projectResource = $resource(
             'http://softuni-issue-tracker.azurewebsites.net/projects', {}, {
                 get: {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': authorisationService.getAuthorisationToken()
-                    }
+                    method: 'GET'
                 }
             }
         );
