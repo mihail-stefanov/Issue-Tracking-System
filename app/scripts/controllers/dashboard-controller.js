@@ -56,14 +56,28 @@ angular.module('issueTrackingSystemApp')
             }
 
             // Setting up the pagination
-            paginationService.config($scope.myIssuesCollection.Issues, 5);
-
-            $scope.pages = paginationService.getPagesArray();
-
-            $scope.selectPage = paginationService.selectPage;
-
-            $scope.$watch(paginationService.getDataToDisplay, function () {
-                $scope.dataSubset = paginationService.getDataToDisplay();
+            
+            $scope.projectPaginator = paginationService.getPaginatorInstance();
+            $scope.issuePaginator = paginationService.getPaginatorInstance();
+            
+            console.log($scope.projectPaginator == $scope.issuePaginator)
+            
+            // Issues pagination
+            
+            $scope.issuePaginator.config($scope.myIssuesCollection.Issues, 5);
+            $scope.issuePages = $scope.issuePaginator.getPagesArray();
+            $scope.selectIssuePage = $scope.issuePaginator.selectPage;
+            $scope.$watch($scope.issuePaginator.getDataToDisplay, function () {
+                $scope.issueDataSubset = $scope.issuePaginator.getDataToDisplay();
+            });
+            
+            // Project pagination
+            
+            $scope.projectPaginator.config($scope.myProjectsCollection, 5);
+            $scope.projectPages = $scope.projectPaginator.getPagesArray();
+            $scope.selectProjectPage = $scope.projectPaginator.selectPage;
+            $scope.$watch($scope.projectPaginator.getDataToDisplay, function () {
+                $scope.projectDataSubset = $scope.projectPaginator.getDataToDisplay();
             });
         });
 }]);
