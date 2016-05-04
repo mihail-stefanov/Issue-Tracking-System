@@ -1,3 +1,87 @@
 <div class="template">
-    
+    <p class="w3-small">
+        <button ng-click="goToDashboard()" class="w3-btn w3-indigo">Dashboard</button>
+        <span class="w3-small w3-right">
+            <span class="w3-margin w3-medium">{{authorisationService.getCurrentUser().userName}}!</span>
+            <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">Logout</button>
+        </span>
+    </p>
+    <h2>Project Page</h2>
+
+   
+    <div class="w3-row">
+       
+        <div class="w3-quarter w3-container w3-margin">
+           
+            <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
+                <tr>
+                    <th colspan="2" class="w3-container w3-dark-grey"><h4>{{currentProject.ProjectKey}}</h4></th>
+                </tr>
+                <tr>
+                    <th>
+                        Project key
+                    </th>
+                    <td>
+                        {{currentProject.ProjectKey}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <td>
+                        {{currentProject.Name}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Description
+                    </th>
+                    <td>
+                        {{currentProject.Description}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Lead ID
+                    </th>
+                    <td>
+                        {{currentProject.Lead.Id}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Lead Username
+                    </th>
+                    <td>
+                        {{currentProject.Lead.Username}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Labels
+                    </th>
+                    <td>
+                        {{currentProjectLabels}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Priorities
+                    </th>
+                    <td>
+                        {{currentProjectPriorities}}
+                    </td>
+                </tr>
+
+            </table>
+            
+        </div>
+        
+        <div class="w3-twothird w3-container w3-margin">
+            
+        </div>
+        
+    </div>
+
 </div>

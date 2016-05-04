@@ -84,9 +84,13 @@
 <!--       DASHBOARD SCREEN       -->
        
         <div ng-switch-when="dashboard" ng-controller="DashboardController">
+            <p class="w3-small w3-right">
+                <span class="w3-margin w3-medium">{{authorisationService.getCurrentUser().userName}}!</span>
+                <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">Logout</button>
+            </p>
             <h2>Dashboard</h2>
             
-            <h3>Welcome, {{authorisationService.getCurrentUser().userName}}!</h3>
+            
             
             <div class="w3-row">
                 
@@ -150,11 +154,6 @@
                 </div>
             </div>
             
-
-            
-            <p class="w3-small">
-                <button ng-click="logout()" class="w3-btn w3-grey">Logout</button>
-            </p>
         </div>
 
     </div>
