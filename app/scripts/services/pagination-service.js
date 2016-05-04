@@ -2,7 +2,7 @@ angular.module('issueTrackingSystemApp')
     .factory('paginationService', function () {
 
         return {
-            getPaginatorInstance: function paginate() {
+            getPaginatorInstance: function getPaginatorInstance () {
                 var rawData = [];
                 var currentPage = 1;
                 var totalPages = 0;

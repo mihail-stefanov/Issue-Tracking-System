@@ -1,6 +1,10 @@
 angular.module('issueTrackingSystemApp')
-    .controller('DashboardController', ['$http', '$q', '$scope', 'authorisationService', 'projectService', 'issueService', 'paginationService', function ($http, $q, $scope, authorisationService, projectService, issueService, paginationService) {
+    .controller('DashboardController', ['$http', '$location', '$q', '$scope', 'authorisationService', 'projectService', 'issueService', 'paginationService', function ($http, $location, $q, $scope, authorisationService, projectService, issueService, paginationService) {
 
+        $scope.goToProject = function (projectId) {
+            $location.url('projects/' + projectId);
+        };
+        
         $scope.projectsEmpty = false;
         $scope.issuesEmpty = false;
 
@@ -59,8 +63,6 @@ angular.module('issueTrackingSystemApp')
             
             $scope.projectPaginator = paginationService.getPaginatorInstance();
             $scope.issuePaginator = paginationService.getPaginatorInstance();
-            
-            console.log($scope.projectPaginator == $scope.issuePaginator)
             
             // Issues pagination
             
