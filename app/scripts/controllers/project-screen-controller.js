@@ -1,5 +1,5 @@
 angular.module('issueTrackingSystemApp')
-    .controller('ProjectScreenController', ['$scope', '$routeParams', '$http', '$q', '$location', 'authorisationService', 'projectService', 'issueService', function ($scope, $routeParams, $http, $q, $location, authorisationService, projectService, issueService) {
+    .controller('ProjectScreenController', ['$scope', '$routeParams', '$http', '$q', '$location', 'authorisationService', 'projectService', 'issueService', 'paginationService', function ($scope, $routeParams, $http, $q, $location, authorisationService, projectService, issueService, paginationService) {
         
         $scope.goToDashboard = function () {
             $location.url('/');
@@ -56,8 +56,21 @@ angular.module('issueTrackingSystemApp')
             if ($scope.currentProjectIssues.length == 0) {
                 $scope.issuesEmpty = true;
             }
+            
+            // Setting up the pagination
+            $scope.issuePaginator = paginationService.getPaginatorInstance();
+            
+            // Issues pagination
+            $scope.issuePaginator.config($scope.currentProjectIssues, 5);
+            $scope.issuePages = $scope.issuePaginator.getPagesArray();
+            $scope.selectIssuePage = $scope.issuePaginator.selectPage;
+            $scope.$watch($scope.issuePaginator.getDataToDisplay, function () {
+                $scope.issueDataSubset = $scope.issuePaginator.getDataToDisplay();
+            });
         });
         
         console.log($scope.currentProject);
+        
+        
         
     }]);

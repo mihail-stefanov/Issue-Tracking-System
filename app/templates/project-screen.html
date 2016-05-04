@@ -62,7 +62,7 @@
                     <th>Due date</th>
                     <th>Assignee</th>
                 </tr>
-                <tr ng-repeat="issue in currentProjectIssues">
+                <tr ng-repeat="issue in issueDataSubset">
                     <td>{{issue.Title}}</td>
                     <td>{{issue.Description}}</td>
                     <td>{{issue.DueDate}}</td>
@@ -72,6 +72,16 @@
                     <td colspan="4">There are currently no issues for this project.</td>
                 </tr>
             </table>
+            
+            <br>
+
+            <div class="w3-center">
+                <ul class="w3-pagination w3-border">
+                    <li ng-repeat="page in issuePages">
+                        <a ng-click="selectIssuePage($event)" value={{page.theNumber}} class={{page.w3Class}}>{{page.theNumber}}</a>
+                    </li>
+                </ul>
+            </div>
             
         </div>
         
