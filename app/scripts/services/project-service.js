@@ -16,6 +16,14 @@ angular.module('issueTrackingSystemApp')
                 }
             }
         );
+        
+        var editProjectResource = $resource(
+            'http://softuni-issue-tracker.azurewebsites.net/projects/:projectId', {}, {
+                update: {
+                    method: 'PUT'
+                }
+            }
+        );
 
         return {
             getProjects: function (params, callback) {
@@ -24,6 +32,10 @@ angular.module('issueTrackingSystemApp')
             
             getProjectById: function (params, callback) {
                 return projectByIdResource.get(params, callback);
+            },
+            
+            editProject: function (params, dataToSend) {
+                return editProjectResource.update(params, dataToSend);
             }
         }
 

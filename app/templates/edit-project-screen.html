@@ -1,0 +1,86 @@
+<div class="template">
+
+
+    <div class="w3-row">
+        <div class="w3-third w3-container">
+            <h2>Edit Project Page</h2>
+        </div>
+        <div class="w3-third w3-container">
+            <div class="w3-center w3-margin">
+                <span class="w3-margin w3-medium">{{authorisationService.getCurrentUser().userName}}</span>
+            </div>
+        </div>
+        <div class="w3-third w3-container">
+            <p class="w3-small">
+                <span class="w3-small w3-right">
+                    <button ng-click="goToDashboard()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
+                        Dashboard
+                    </button>
+                    <button ng-click="saveCurrentProject()" class="w3-btn w3-orange w3-tiny w3-round-xxlarge">
+                        Save
+                    </button>
+                    <button ng-click="goToProject()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
+                        Cancel
+                    </button>
+                    <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">
+                        Logout
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="w3-row">
+
+        <div class="w3-third w3-container w3-margin">
+
+            <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
+                <tr>
+                    <th colspan="2" class="w3-container w3-dark-grey">
+                        <h4>Details</h4>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Project key</th>
+                    <td>{{editedProject.ProjectKey}}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td><input type="text" ng-model="editedProject.Name"></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><input type="text" ng-model="editedProject.Description"></td>
+                </tr>
+                <tr>
+                    <th>Lead ID</th>
+                    <td><input type="text" ng-model="editedProject.Lead.Id"></td>
+                </tr>
+                <tr>
+                    <th>Labels</th>
+                    <td>
+                        <span ng-repeat="label in editedProject.Labels">
+                            <input type="text" ng-model="label.Name"> <br>
+                        </span>
+                        <button class="w3-btn w3-grey w3-tiny w3-round-xxlarge" ng-click="addLabel()">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Priorities</th>
+                    <td>
+                        <span ng-repeat="priority in editedProject.Priorities">
+                            <input type="text" ng-model="priority.Name"> <br>
+                        </span>
+                        <button class="w3-btn w3-grey w3-tiny w3-round-xxlarge" ng-click="addPriority()">+</button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+</div>

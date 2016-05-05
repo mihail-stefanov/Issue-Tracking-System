@@ -5,6 +5,10 @@ angular.module('issueTrackingSystemApp')
             $location.url('/');
         };
         
+        $scope.editCurrentProject = function() {
+            $location.url('projects/' + $scope.projectId + '/edit/');
+        }
+        
         $scope.logout = function() {
             authorisationService.logout();
             $location.url('/');

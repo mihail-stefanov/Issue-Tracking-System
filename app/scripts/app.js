@@ -6,9 +6,14 @@ angular.module('issueTrackingSystemApp', ['ngRoute', 'ngResource'])
             controller: 'InitialScreenController'
         });
     
-        $routeProvider.when('/projects/:projectId',{
+        $routeProvider.when('/projects/:projectId', {
             templateUrl: 'templates/project-screen.html',
             controller: 'ProjectScreenController'
+        });
+    
+        $routeProvider.when('/projects/:projectId/edit', {
+            templateUrl: 'templates/edit-project-screen.html',
+            controller: 'EditProjectScreenController'
         });
     
         $routeProvider.otherwise({
