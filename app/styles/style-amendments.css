@@ -3,3 +3,8 @@ table {
     word-wrap: break-word;
     table-layout: fixed;
 }
+
+.w3-modal {
+    z-index: 1000;
+    display: inherit;
+}

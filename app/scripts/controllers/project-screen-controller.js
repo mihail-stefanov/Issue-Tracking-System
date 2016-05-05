@@ -9,6 +9,10 @@ angular.module('issueTrackingSystemApp')
             $location.url('projects/' + $scope.projectId + '/edit/');
         }
         
+        $scope.addIssue = function() {
+            $location.url('projects/' + $scope.projectId + '/add-issue/');
+        }
+        
         $scope.logout = function() {
             authorisationService.logout();
             $location.url('/');
@@ -74,10 +78,34 @@ angular.module('issueTrackingSystemApp')
             $scope.$watch($scope.issuePaginator.getDataToDisplay, function () {
                 $scope.issueDataSubset = $scope.issuePaginator.getDataToDisplay();
             });
+            
+            
+            
+            
+            // Modal screen for adding new issues to the project
+
+            if ($location.url() == '/projects/' + $scope.projectId + '/add-issue') {
+                $scope.addIssueModalShown = true;
+            } else if ($location.url() == '/projects/' + $scope.projectId) {
+                $scope.addIssueModalShown = false;
+            }
+            
+            console.log($location.url() == '/projects/' + $scope.projectId + '/add-issue');
+            console.log($location.url() == '/projects/' + $scope.projectId);
+
+
+            $scope.hideAddIssueModal = function() {
+                $location.url('projects/' + $scope.projectId);
+            };
+            
+            
+            
+            
         });
         
         console.log($scope.currentProject);
         
         
+
         
     }]);

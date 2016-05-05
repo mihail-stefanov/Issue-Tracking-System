@@ -16,6 +16,11 @@ angular.module('issueTrackingSystemApp', ['ngRoute', 'ngResource'])
             controller: 'EditProjectScreenController'
         });
     
+        $routeProvider.when('/projects/:projectId/add-issue', {
+            templateUrl: 'templates/project-screen.html',
+            controller: 'ProjectScreenController'
+        });
+    
         $routeProvider.otherwise({
             redirectTo: 'templates/initial-screen.html',
             controller: 'InitialScreenController'

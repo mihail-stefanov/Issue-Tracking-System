@@ -1,4 +1,7 @@
 <div class="template">
+   
+<!--   HEADINGS AND BUTTONS -->
+   
     <div class="w3-row">
         <div class="w3-third w3-container">
             <h2>Project Page</h2>
@@ -17,7 +20,7 @@
                     <button ng-click="editCurrentProject()" class="w3-btn w3-red w3-tiny w3-round-xxlarge">
                         Edit
                     </button>
-                    <button ng-click="" class="w3-btn w3-light-green w3-tiny w3-round-xxlarge">
+                    <button ng-click="addIssue()" class="w3-btn w3-light-green w3-tiny w3-round-xxlarge">
                         Add Issue
                     </button>
                     <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">
@@ -27,6 +30,43 @@
             </p>
         </div>
     </div>
+
+<!--   MODAL FOR ADDING NEW ISSUE   -->
+   
+    <div id="id01" class="w3-modal" ng-show="addIssueModalShown">
+        <div class="w3-modal-content w3-card-8" style="width:500px">
+           
+            <header class="w3-container w3-indigo">
+                <span class="w3-closebtn" ng-click="hideAddIssueModal()">
+                    &times;
+                </span>
+                <h2>Add Issue</h2>
+            </header>
+            
+            <main>
+                <table class="w3-container w3-table w3-striped">
+                    <tr>
+                        <th>Title</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td><input type="text"></td>
+                    </tr>
+                </table>
+               
+                <p>***</p>
+                <p>***</p>
+            </main>
+            
+            <footer class="w3-container w3-indigo">
+                <button class="w3-btn w3-orange w3-tiny w3-round-xxlarge w3-right w3-margin">Submit</button>
+            </footer>
+            
+        </div>
+    </div>
+   
+<!--   TABLES WITH DATA   -->
    
     <div class="w3-row">
        
