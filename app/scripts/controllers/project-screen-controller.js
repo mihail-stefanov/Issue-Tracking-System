@@ -14,12 +14,15 @@ angular.module('issueTrackingSystemApp')
             $location.url('/');
         }
         
+        $scope.currentProject = {};
+        $scope.currentProjectIssues = {};
+        
         $scope.issuesEmpty = false;
         
         $scope.projectId = $routeParams.projectId;
         
         $scope.obtainData = function () {
-            
+            console.info('Data reobtained!');
             $http.defaults.headers.common['Authorization'] = authorisationService.getAuthorisationToken();
 
             $scope.currentProject = projectService.getProjectById({

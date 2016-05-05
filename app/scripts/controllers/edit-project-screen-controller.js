@@ -36,7 +36,6 @@ angular.module('issueTrackingSystemApp')
         $q.when($scope.currentProject.$promise).then(function() {
             
             $scope.editedProject = JSON.parse(JSON.stringify($scope.currentProject));
-            console.log($scope.editedProject);
             
             $scope.addLabel = function () {
                 $scope.editedProject.Labels.push({Name: ""});
@@ -66,16 +65,9 @@ angular.module('issueTrackingSystemApp')
                     projectToSend.priorities.push({Name:priorityObj.Name});
                 });
                 
-                console.info($scope.editedProject.Labels);
-                console.warn(projectToSend.labels);
-                
-                projectService.editProject($scope.projectId,projectToSend,$scope.goToProject,function() {
-                    console.log('FAILED TO EDIT')
-                });
-                
-//                projectService.editProject({
-//                    projectId: $scope.projectId
-//                }, projectToSend);
+                projectService.editProject({
+                    projectId: $scope.projectId
+                }, projectToSend).$promise.then($scope.goToProject);
             }
         });
         
