@@ -54,23 +54,28 @@ angular.module('issueTrackingSystemApp')
                 projectToSend.Name = $scope.editedProject.Name;
                 projectToSend.Description = $scope.editedProject.Description;
                 projectToSend.LeadId = $scope.editedProject.Lead.Id;
-                projectToSend.Labels = [];
-                projectToSend.Priorities = [];
+                projectToSend.labels = [];
+                projectToSend.priorities = [];
                 
                 $scope.editedProject.Labels.forEach(function (labelObj, index, array) {
-                    projectToSend.Labels.push(labelObj.Name);
+                    
+                    projectToSend.labels.push({Name:labelObj.Name});
                 });
                 
                 $scope.editedProject.Priorities.forEach(function (priorityObj, index, array) {
-                    projectToSend.Priorities.push(priorityObj.Name);
+                    projectToSend.priorities.push({Name:priorityObj.Name});
                 });
                 
                 console.info($scope.editedProject.Labels);
-                console.warn(projectToSend.Labels);
+                console.warn(projectToSend.labels);
                 
-                projectService.editProject({
-                    projectId: $scope.projectId
-                }, projectToSend);
+                projectService.editProject($scope.projectId,projectToSend,$scope.goToProject,function() {
+                    console.log('FAILED TO EDIT')
+                });
+                
+//                projectService.editProject({
+//                    projectId: $scope.projectId
+//                }, projectToSend);
             }
         });
         
