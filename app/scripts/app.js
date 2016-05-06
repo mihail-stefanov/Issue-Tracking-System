@@ -21,8 +21,13 @@ angular.module('issueTrackingSystemApp', ['ngRoute', 'ngResource'])
             controller: 'ProjectScreenController'
         });
     
+        $routeProvider.when('/issues/:issueId', {
+            templateUrl: 'templates/issue-screen.html',
+            controller: 'IssueScreenController'
+        });
+    
         $routeProvider.otherwise({
-            redirectTo: 'templates/initial-screen.html',
+            redirectTo: '/',
             controller: 'InitialScreenController'
         });
 

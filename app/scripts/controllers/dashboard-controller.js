@@ -5,6 +5,10 @@ angular.module('issueTrackingSystemApp')
             $location.url('projects/' + projectId);
         };
         
+        $scope.goToIssue = function (issueId) {
+            $location.url('issues/' + issueId);
+        }
+        
         $scope.projectsEmpty = false;
         $scope.issuesEmpty = false;
 

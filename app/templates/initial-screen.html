@@ -145,7 +145,7 @@
                             <th>Project</th>
                             <th>Due date</th>
                         </tr>
-                        <tr ng-repeat="issue in issueDataSubset">
+                        <tr ng-repeat="issue in issueDataSubset" ng-click="goToIssue(issue.Id)">
                             <td>{{issue.Title}}</td>
                             <td colspan="2">{{issue.Description}}</td>
                             <td>{{issue.Project.Name}}</td>

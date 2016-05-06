@@ -122,7 +122,8 @@ angular.module('issueTrackingSystemApp')
                     
                     issueToSave.Title = $scope.newIssueTitle;
                     issueToSave.Description = $scope.newIssueDescription;
-                    issueToSave.DueDate = $scope.newIssueDueDate.toString();
+                    issueToSave.DueDate = $scope.newIssueDueDate.toString(); 
+                    // TODO: Consider creating a custom service for picking dates and times
                     issueToSave.ProjectId = $scope.newIssueSelectedProject.Id;
                     issueToSave.AssigneeId = $scope.newIssueSelectedAssignee.Id;
                     issueToSave.PriorityId = $scope.newIssueSelectedPriority.Id;

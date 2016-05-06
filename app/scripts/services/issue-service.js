@@ -18,6 +18,14 @@ angular.module('issueTrackingSystemApp')
             }
         );
         
+        var issueByIdResource = $resource(
+            'http://softuni-issue-tracker.azurewebsites.net/issues/:issueId', {}, {
+                get: {
+                    method: 'GET'
+                }
+            }
+        );
+        
         var addIssueResource = $resource(
             'http://softuni-issue-tracker.azurewebsites.net/issues', {}, {
                 save: {
@@ -33,6 +41,10 @@ angular.module('issueTrackingSystemApp')
             
             getIssuesByProjectId: function (params, callback) {
                 return issueByProjectIdResource.query(params, callback);
+            },
+            
+            getIssueById: function (params, callback) {
+                return issueByIdResource.get(params, callback);
             },
             
             addNewIssue: function (params, dataToSend) {
