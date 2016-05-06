@@ -13,6 +13,10 @@ angular.module('issueTrackingSystemApp')
             $location.url('projects/' + $scope.projectId + '/add-issue/');
         }
         
+        $scope.goToIssue = function (issueId) {
+            $location.url('issues/' + issueId);
+        }
+        
         $scope.logout = function() {
             authorisationService.logout();
             $location.url('/');

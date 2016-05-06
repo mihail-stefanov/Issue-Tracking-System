@@ -17,6 +17,9 @@
                 <button ng-click="goToDashboard()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
                     Dashboard
                 </button>
+                <button ng-click="goToProject()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
+                    Project
+                </button>
                 <button ng-click="editCurrentIssue()" class="w3-btn w3-red w3-tiny w3-round-xxlarge">
                     Edit
                 </button>
@@ -102,6 +105,11 @@
                 <td> - {{status.Name}}</td>
                 <td>
                     <button>Change</button>
+                </td>
+            </tr>
+            <tr ng-if="noStatusesAvailable">
+                <td>
+                    There are currently no statuses available.
                 </td>
             </tr>
         </table>

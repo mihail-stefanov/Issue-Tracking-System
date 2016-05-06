@@ -137,7 +137,7 @@
         
         <div class="w3-twothird w3-container w3-margin">
            
-            <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
+            <table class="w3-container w3-table w3-bordered w3-striped w3-hoverable w3-card-4 w3-small">
                 <tr>
                     <th colspan="4" class="w3-container w3-dark-grey"><h4>Issues</h4></th>
                 </tr>
@@ -147,7 +147,7 @@
                     <th>Due date</th>
                     <th>Assignee</th>
                 </tr>
-                <tr ng-repeat="issue in issueDataSubset">
+                <tr ng-repeat="issue in issueDataSubset" ng-click="goToIssue(issue.Id)">
                     <td>{{issue.Title}}</td>
                     <td>{{issue.Description}}</td>
                     <td>{{issue.DueDate}}</td>
