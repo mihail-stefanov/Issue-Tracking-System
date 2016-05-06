@@ -8,7 +8,7 @@
         </div>
         <div class="w3-third w3-container">
             <div class="w3-center w3-margin">
-                    <span class="w3-margin w3-medium">{{authorisationService.getCurrentUser().userName}}</span>
+                    <span class="w3-margin w3-medium">{{userService.getCurrentUserCredentials().userName}}</span>
             </div>
         </div>
         <div class="w3-third w3-container">
@@ -45,6 +45,7 @@
             
             <main>
                 <table class="w3-container w3-table w3-striped">
+                   
                     <tr>
                         <th>Title</th>
                         <td><input type="text"></td>
@@ -53,10 +54,23 @@
                         <th>Description</th>
                         <td><input type="text"></td>
                     </tr>
+                    <tr>
+                        <th>Due date</th>
+                        <td><input type="datetime"></td>
+                    </tr>
+                    <tr>
+                        <th>Project ID</th>
+                        <td><input type="number"></td>
+                    </tr>
+                    <tr>
+                        <th>Assignee ID</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>Labels</th>
+                        <td><input type="text"></td>
+                    </tr>
                 </table>
-               
-                <p>***</p>
-                <p>***</p>
             </main>
             
             <footer class="w3-container w3-indigo">

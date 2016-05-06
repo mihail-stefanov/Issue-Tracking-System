@@ -1,5 +1,5 @@
 angular.module('issueTrackingSystemApp')
-    .factory('authorisationService', ['$http', '$httpParamSerializerJQLike', function ($http, $httpParamSerializerJQLike) {
+    .factory('authorisationService', ['$http', '$httpParamSerializerJQLike', 'userService', function ($http, $httpParamSerializerJQLike, userService) {
         return {
 
             login: function (userLoginData, success, error) {
@@ -36,16 +36,9 @@ angular.module('issueTrackingSystemApp')
                 }).error(error);
             },
             
-            getCurrentUser: function() {
-                var loggedInUser = sessionStorage['currentUser'];
-                if (loggedInUser != undefined) {
-                    return JSON.parse(loggedInUser);
-                } // TODO: Improve variable naming
-            },
-            
             getAuthorisationToken: function() {
-                var loggedInUser = this.getCurrentUser();
-                var authorisationToken = 'Bearer ' + loggedInUser.access_token;
+                var loggedInUserCredentials = userService.getCurrentUserCredentials();
+                var authorisationToken = 'Bearer ' + loggedInUserCredentials.access_token;
                 return authorisationToken;
             },
 

@@ -1,5 +1,5 @@
 angular.module('issueTrackingSystemApp')
-    .controller('DashboardController', ['$http', '$location', '$q', '$scope', 'authorisationService', 'projectService', 'issueService', 'paginationService', function ($http, $location, $q, $scope, authorisationService, projectService, issueService, paginationService) {
+    .controller('DashboardController', ['$http', '$location', '$q', '$scope', 'authorisationService', 'userService', 'projectService', 'issueService', 'paginationService', function ($http, $location, $q, $scope, authorisationService, userService, projectService, issueService, paginationService) {
 
         $scope.goToProject = function (projectId) {
             $location.url('projects/' + projectId);
@@ -41,7 +41,7 @@ angular.module('issueTrackingSystemApp')
 
             // Adding projects the user is the lead of
 
-            var currentUserName = authorisationService.getCurrentUser();
+            var currentUserName = userService.getCurrentUserCredentials();
 
             $scope.fullProjectsCollection.Projects.forEach(function (project) {
                 if (project.Lead.Username == currentUserName.userName) {
