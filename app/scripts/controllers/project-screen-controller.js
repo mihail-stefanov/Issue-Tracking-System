@@ -1,5 +1,5 @@
 angular.module('issueTrackingSystemApp')
-    .controller('ProjectScreenController', ['$scope', '$routeParams', '$http', '$q', '$location', 'authorisationService', 'projectService', 'issueService', 'paginationService', function ($scope, $routeParams, $http, $q, $location, authorisationService, projectService, issueService, paginationService) {
+    .controller('ProjectScreenController', ['$scope', '$routeParams', '$http', '$q', '$location', 'authorisationService', 'projectService', 'issueService', 'userService', 'paginationService', function ($scope, $routeParams, $http, $q, $location, authorisationService, projectService, issueService, userService, paginationService) {
         
         $scope.goToDashboard = function () {
             $location.url('/');
@@ -18,6 +18,7 @@ angular.module('issueTrackingSystemApp')
             $location.url('/');
         }
         
+        $scope.currentUser = userService.getCurrentUserCredentials();
         $scope.currentProject = {};
         $scope.currentProjectIssues = {};
         
@@ -83,23 +84,75 @@ angular.module('issueTrackingSystemApp')
             
             
             // Modal screen for adding new issues to the project
-
+            
+            $scope.fullProjectsCollection = projectService.getProjects({
+                filter: '',
+                pageSize: '1000',
+                pageNumber: '1'
+            });
+            
+            $scope.fullUserCollection = userService.getAllUsers();
+            
+            
+            $q.all([
+                $scope.fullProjectsCollection.$promise,
+                $scope.fullUserCollection.$promise,
+                $scope.currentUser.$promise
+            ]).then(function () {
+                $scope.fullProjectsCollection.Projects.forEach(function (project, index, array) {
+                    if ($scope.currentProject.Id == project.Id) {
+                        $scope.newIssueSelectedProject = $scope.fullProjectsCollection.Projects[index];
+                        console.info($scope.newIssueSelectedProject);
+                    }
+                });
+                
+                $scope.fullUserCollection.forEach(function (user, index, array) {
+                    if ($scope.currentUser.userName == user.Username) {
+                        $scope.newIssueSelectedAssignee = $scope.fullUserCollection[index];
+                    }
+                });
+                
+                $scope.writtenLabels = '';
+                
+                // Preparing the issue to be sent to the server
+                
+                $scope.addNewIssue = function () {
+                    
+                    var issueToSave = {};
+                    
+                    issueToSave.Title = $scope.newIssueTitle;
+                    issueToSave.Description = $scope.newIssueDescription;
+                    issueToSave.DueDate = $scope.newIssueDueDate.toString();
+                    issueToSave.ProjectId = $scope.newIssueSelectedProject.Id;
+                    issueToSave.AssigneeId = $scope.newIssueSelectedAssignee.Id;
+                    issueToSave.PriorityId = $scope.newIssueSelectedPriority.Id;
+                    issueToSave.labels = [];
+                    
+                    var obtainedLabels = $scope.newIssueWrittenLabels.split(/\s*,\s*/);
+                    
+                    obtainedLabels.forEach( function (label) {
+                        issueToSave.labels.push({Name:label});
+                    });
+                    
+                    issueService.addNewIssue({}, issueToSave).$promise.then(function () {
+                        $location.url('projects/' + $scope.projectId);
+                    });
+                };
+                
+            });
+            
+            
+            
+            
             if ($location.url() == '/projects/' + $scope.projectId + '/add-issue') {
                 $scope.addIssueModalShown = true;
-            } else if ($location.url() == '/projects/' + $scope.projectId) {
+            } else {
                 $scope.addIssueModalShown = false;
             }
-            
-            console.log($location.url() == '/projects/' + $scope.projectId + '/add-issue');
-            console.log($location.url() == '/projects/' + $scope.projectId);
-
 
             $scope.hideAddIssueModal = function() {
                 $location.url('projects/' + $scope.projectId);
             };
-            
-            
-            
             
         });
         

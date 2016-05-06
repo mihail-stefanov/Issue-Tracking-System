@@ -8,3 +8,7 @@ table {
     z-index: 1000;
     display: inherit;
 }
+
+select {
+    max-width: 200px;
+}

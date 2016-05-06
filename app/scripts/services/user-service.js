@@ -11,8 +11,9 @@ angular.module('issueTrackingSystemApp')
         
         var allUsersResource = $resource(
             'http://softuni-issue-tracker.azurewebsites.net/users', {}, {
-                get: {
-                    method: 'GET'
+                query: {
+                    method: 'GET',
+                    isArray:true
                 }
             }
         );
@@ -30,13 +31,7 @@ angular.module('issueTrackingSystemApp')
             },
             
             getAllUsers: function(params, callback) {
-                return allUsersResource.get(params, callback);
+                return allUsersResource.query(params, callback);
             }
         };
     }]);
-
-
-
-
-
-            
