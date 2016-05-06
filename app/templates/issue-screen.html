@@ -104,10 +104,12 @@
             <tr ng-repeat="status in currentIssue.AvailableStatuses">
                 <td> - {{status.Name}}</td>
                 <td>
-                    <button>Change</button>
+                    <button class="w3-btn w3-grey w3-tiny w3-round-xxlarge" ng-click="changeStatus(status.Id)">
+                        Change
+                    </button>
                 </td>
             </tr>
-            <tr ng-if="noStatusesAvailable">
+            <tr ng-show="currentIssue.AvailableStatuses.length == 0">
                 <td>
                     There are currently no statuses available.
                 </td>
