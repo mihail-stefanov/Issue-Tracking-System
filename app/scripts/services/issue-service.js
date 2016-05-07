@@ -42,6 +42,14 @@ angular.module('issueTrackingSystemApp')
                 }
             }
         );
+        
+        var editIssueResource = $resource(
+            'http://softuni-issue-tracker.azurewebsites.net/issues/:issueId', {}, {
+                update: {
+                    method: 'PUT'
+                }
+            }
+        );
 
         return {
             getIssues: function (params, callback) {
@@ -62,6 +70,10 @@ angular.module('issueTrackingSystemApp')
             
             changeIssueStatus: function (params, dataToSend) {
                 return changeIssueStatusResource.update(params, dataToSend);
+            },
+            
+            editIssue: function (params, dataToSend) {
+                return editIssueResource.update(params, dataToSend);
             }
             
         }

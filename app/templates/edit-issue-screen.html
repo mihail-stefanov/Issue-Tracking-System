@@ -1,0 +1,94 @@
+<div class="template">
+    
+    <div class="w3-row">
+        <div class="w3-third w3-container">
+            <h2>Edit Issue Page</h2>
+        </div>
+        <div class="w3-third w3-container">
+            <div class="w3-center w3-margin">
+                <span class="w3-margin w3-medium">{{userService.getCurrentUserCredentials().userName}}</span>
+            </div>
+        </div>
+        <div class="w3-third w3-container">
+            <p class="w3-small">
+                <span class="w3-small w3-right">
+                    <button ng-click="goToDashboard()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
+                        Dashboard
+                    </button>
+                    <button ng-click="saveCurrentIssue()" class="w3-btn w3-orange w3-tiny w3-round-xxlarge">
+                        Save
+                    </button>
+                    <button ng-click="goToIssue()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
+                        Cancel
+                    </button>
+                    <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">
+                        Logout
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="w3-row">
+        <div class="w3-third w3-container w3-margin">
+
+            <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
+
+                <tr>
+                    <th colspan="2" class="w3-container w3-dark-grey"><h4>Details</h4></th>
+                </tr>
+                <tr>
+                    <th>Issue Key</th>
+                    <td>{{editedIssue.IssueKey}}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td><input type="text" ng-model="editedIssue.Title"></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><input type="text" ng-model="editedIssue.Description"></td>
+                </tr>
+                <tr>
+                    <th>Assignee</th>
+                    <td>
+                        <select ng-model="issueSelectedAssignee" ng-options="assignee.Username for assignee in fullUserCollection" style="width: 150px;"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Priority</th>
+                    <td>
+                        <select ng-model="issueSelectedPriority" ng-options="priority.Name for priority in availablePriorities"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Due Date</th>
+                    <td><input type="text" ng-model="editedIssue.DueDate"></td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>{{editedIssue.Author.Username}}</td>
+                </tr>
+                <tr>
+                    <th>Project</th>
+                    <td>{{editedIssue.Project.Name}}</td>
+                </tr>
+                <tr>
+                    <th>Labels</th>
+                    <td>
+                        <span ng-repeat="label in editedIssue.Labels">
+                            <input type="text" ng-model="label.Name"> <br>
+                        </span>
+                        <button class="w3-btn w3-grey w3-tiny w3-round-xxlarge" ng-click="addLabel()">
+                            +
+                        </button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+    
+</div>

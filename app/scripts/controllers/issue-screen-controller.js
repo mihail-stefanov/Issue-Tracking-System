@@ -26,7 +26,7 @@ angular.module('issueTrackingSystemApp')
             $scope.currentIssue = issueService.getIssueById({
                 issueId: $scope.issueId
             });
-        }
+        };
 
         $scope.obtainData();
         

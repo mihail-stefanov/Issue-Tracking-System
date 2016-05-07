@@ -103,6 +103,8 @@ angular.module('issueTrackingSystemApp')
                 $scope.fullUserCollection.$promise,
                 $scope.currentUser.$promise
             ]).then(function () {
+                
+                // Pre-selecting the current project
                 $scope.fullProjectsCollection.Projects.forEach(function (project, index, array) {
                     if ($scope.currentProject.Id == project.Id) {
                         $scope.newIssueSelectedProject = $scope.fullProjectsCollection.Projects[index];
@@ -110,6 +112,7 @@ angular.module('issueTrackingSystemApp')
                     }
                 });
                 
+                // Pre-selecting the current user as a assignee
                 $scope.fullUserCollection.forEach(function (user, index, array) {
                     if ($scope.currentUser.userName == user.Username) {
                         $scope.newIssueSelectedAssignee = $scope.fullUserCollection[index];
