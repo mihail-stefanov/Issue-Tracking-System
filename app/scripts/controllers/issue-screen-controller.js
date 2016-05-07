@@ -48,11 +48,23 @@ angular.module('issueTrackingSystemApp')
             
             // Obtaining and showing issue comments
             
-            $scope.comments = issueService.getIssueComments({
-                issueId: $scope.issueId
-            });
+            $scope.obtainComments = function () {
+                $scope.comments = issueService.getIssueComments({
+                    issueId: $scope.issueId
+                });
+            };
             
+            $scope.obtainComments();
             
+            $scope.sendComment = function(commentText) {
+                issueService.addIssueComment({
+                    issueId: $scope.issueId
+                },{
+                    Text: commentText
+                }).$promise.then(function () {
+                    $scope.obtainComments();
+                });
+            };
         });
         
 

@@ -59,6 +59,15 @@ angular.module('issueTrackingSystemApp')
                 }
             }
         );
+        
+        var addIssueCommentResource = $resource(
+            'http://softuni-issue-tracker.azurewebsites.net/issues/:issueId/comments', {}, {
+                save: {
+                    method: 'POST',
+                    isArray: true
+                }
+            }
+        );
 
         return {
             getIssues: function (params, callback) {
@@ -87,6 +96,10 @@ angular.module('issueTrackingSystemApp')
             
             getIssueComments: function (params, callback) {
                 return issueCommentsResource.query(params, callback);
+            },
+            
+            addIssueComment: function (params, dataToSend) {
+                return addIssueCommentResource.save(params, dataToSend);
             }
             
         }

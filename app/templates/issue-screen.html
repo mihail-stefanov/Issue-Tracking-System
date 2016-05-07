@@ -158,12 +158,12 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" class="w3-input" placeholder="Enter your message here">
+                    <input type="text" class="w3-input" ng-model="commentText" placeholder="Enter your message here">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button class="w3-btn w3-orange w3-tiny w3-round-xxlarge">Send</button>
+                    <button class="w3-btn w3-orange w3-tiny w3-round-xxlarge" ng-click="sendComment(commentText)">Send</button>
                 </td>
             </tr>
         </table>
