@@ -6,6 +6,11 @@ angular.module('issueTrackingSystemApp', ['ngRoute', 'ngResource'])
             controller: 'InitialScreenController'
         });
     
+        $routeProvider.when('/profile/password', {
+            templateUrl: 'templates/change-password-screen.html',
+            controller: 'ChangePasswordScreenController'
+        });
+    
         $routeProvider.when('/projects/:projectId', {
             templateUrl: 'templates/project-screen.html',
             controller: 'ProjectScreenController'

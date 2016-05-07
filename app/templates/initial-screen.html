@@ -99,6 +99,9 @@
                 <div class="w3-third w3-container">
                     <p class="w3-small">
                         <span class="w3-small w3-right">
+                            <button ng-click="goToSettings()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
+                                Settings
+                            </button>
                             <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">
                                 Logout
                             </button>
@@ -152,7 +155,7 @@
                             <td>{{issue.DueDate}}</td>
                         </tr>
                         <tr ng-if="issuesEmpty">
-                            <td colspan="4">There are currently no assigned issues.</td>
+                            <td colspan="5">There are currently no assigned issues.</td>
                         </tr>
                     </table>
                     

@@ -41,6 +41,21 @@ angular.module('issueTrackingSystemApp')
                 var authorisationToken = 'Bearer ' + loggedInUserCredentials.access_token;
                 return authorisationToken;
             },
+            
+            changePassword: function(userPasswordData, success, error) {
+                
+                $http.defaults.headers.common['Authorization'] = this.getAuthorisationToken();
+                
+                var httpRequest = {
+                    method: 'POST',
+                    url: 'http://softuni-issue-tracker.azurewebsites.net/api/Account/ChangePassword',
+                    data: userPasswordData
+                };
+                
+                $http(httpRequest).success(function (response) {
+                    success();
+                }).error(error);
+            },
 
             logout: function () {
                 delete sessionStorage['currentUser'];

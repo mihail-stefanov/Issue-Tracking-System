@@ -1,6 +1,10 @@
 angular.module('issueTrackingSystemApp')
     .controller('DashboardController', ['$http', '$location', '$q', '$scope', 'authorisationService', 'userService', 'projectService', 'issueService', 'paginationService', function ($http, $location, $q, $scope, authorisationService, userService, projectService, issueService, paginationService) {
 
+        $scope.goToSettings = function () {
+            $location.url('profile/password/');
+        };
+        
         $scope.goToProject = function (projectId) {
             $location.url('projects/' + projectId);
         };
