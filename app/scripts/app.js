@@ -17,7 +17,8 @@ angular.module('issueTrackingSystemApp', ['ngRoute', 'ngResource'])
         });
         
         $routeProvider.when('/projects/add', {
-            templateUrl: '',
+            templateUrl: 'templates/all-projects-screen.html',
+            controller: 'AllProjectsScreenController'
         });
     
         $routeProvider.when('/projects/:projectId', {
