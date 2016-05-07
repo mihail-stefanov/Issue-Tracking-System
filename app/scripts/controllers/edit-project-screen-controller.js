@@ -1,5 +1,14 @@
 angular.module('issueTrackingSystemApp')
-    .controller('EditProjectScreenController', ['$scope', '$routeParams', '$http', '$q', '$location', 'authorisationService', 'projectService', function ($scope, $routeParams, $http, $q, $location, authorisationService, projectService) {
+    .controller('EditProjectScreenController', ['$scope', '$routeParams', '$http', '$q', '$location', 'authorisationService', 'projectService', 'userService', function ($scope, $routeParams, $http, $q, $location, authorisationService, projectService, userService) {
+        
+        // Checking if user is admin
+        
+        $http.defaults.headers.common['Authorization'] = authorisationService.getAuthorisationToken();
+        
+        $scope.getCurrentUserInfo = userService.getCurrentUserInfo().$promise.then(function(response) {
+            $scope.isAdmin = response.isAdmin;
+            console.log($scope.isAdmin);
+        });
         
         $scope.goToDashboard = function () {
             $location.url('/');
@@ -20,8 +29,6 @@ angular.module('issueTrackingSystemApp')
         
         $scope.obtainData = function () {
             
-            $http.defaults.headers.common['Authorization'] = authorisationService.getAuthorisationToken();
-
             $scope.currentProject = projectService.getProjectById({
                 projectId: $scope.projectId
             });

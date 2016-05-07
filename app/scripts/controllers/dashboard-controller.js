@@ -1,6 +1,18 @@
 angular.module('issueTrackingSystemApp')
     .controller('DashboardController', ['$http', '$location', '$q', '$scope', 'authorisationService', 'userService', 'projectService', 'issueService', 'paginationService', function ($http, $location, $q, $scope, authorisationService, userService, projectService, issueService, paginationService) {
 
+        // Checking if user is admin
+        
+        $http.defaults.headers.common['Authorization'] = authorisationService.getAuthorisationToken();
+        
+        $scope.getCurrentUserInfo = userService.getCurrentUserInfo().$promise.then(function(response) {
+            $scope.isAdmin = response.isAdmin;
+            console.log($scope.isAdmin);
+        });
+        
+        
+        // Setting links and obtaining data
+        
         $scope.showAllProjects = function () {
             $location.url('projects/');
         };
@@ -25,8 +37,6 @@ angular.module('issueTrackingSystemApp')
         $scope.issuesEmpty = false;
 
         $scope.obtainData = function () {
-
-            $http.defaults.headers.common['Authorization'] = authorisationService.getAuthorisationToken();
 
             $scope.fullProjectsCollection = projectService.getProjects({
                 filter: '',

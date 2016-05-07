@@ -20,7 +20,7 @@
                 <button ng-click="goToProject()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
                     Project
                 </button>
-                <button ng-click="editCurrentIssue()" class="w3-btn w3-red w3-tiny w3-round-xxlarge">
+                <button ng-click="editCurrentIssue()" ng-if="isLead" class="w3-btn w3-red w3-tiny w3-round-xxlarge">
                     Edit
                 </button>
                 <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">
@@ -97,7 +97,7 @@
 
         <!--    STATUSES    -->
 
-        <div class="w3-third w3-container w3-margin">
+        <div class="w3-third w3-container w3-margin" ng-if="isAdmin || isLead || isAssignee">
 
             <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
                 <tr>
@@ -151,7 +151,7 @@
     
     <!--    ADD A COMMENT    -->
     
-    <div class="w3-container w3-margin">
+    <div class="w3-container w3-margin" ng-if="isAdmin || isLead || isAssignee">
         <table class="w3-container w3-table w3-bordered w3-card-4 w3-small">
             <tr>
                 <th>Add a comment</th>

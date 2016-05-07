@@ -17,10 +17,10 @@
                     <button ng-click="goToDashboard()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
                         Dashboard
                     </button>
-                    <button ng-click="editCurrentProject()" class="w3-btn w3-red w3-tiny w3-round-xxlarge">
+                    <button ng-click="editCurrentProject()" ng-if="isLead || isAdmin" class="w3-btn w3-red w3-tiny w3-round-xxlarge">
                         Edit
                     </button>
-                    <button ng-click="addIssue()" class="w3-btn w3-light-green w3-tiny w3-round-xxlarge">
+                    <button ng-click="addIssue()" ng-if="isLead || isAdmin" class="w3-btn w3-light-green w3-tiny w3-round-xxlarge">
                         Add Issue
                     </button>
                     <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">

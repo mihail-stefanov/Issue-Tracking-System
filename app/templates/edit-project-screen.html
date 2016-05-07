@@ -54,7 +54,8 @@
                 </tr>
                 <tr>
                     <th>Lead ID</th>
-                    <td><input type="text" ng-model="editedProject.Lead.Id"></td>
+                    <td ng-if="isAdmin"><input type="text" ng-model="editedProject.Lead.Id"></td>
+                    <td ng-if="!isAdmin">{{editedProject.Lead.Id}}</td>
                 </tr>
                 <tr>
                     <th>Labels</th>

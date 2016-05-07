@@ -1,6 +1,16 @@
 angular.module('issueTrackingSystemApp')
     .controller('ProjectScreenController', ['$scope', '$routeParams', '$http', '$q', '$location', 'authorisationService', 'projectService', 'issueService', 'userService', 'paginationService', function ($scope, $routeParams, $http, $q, $location, authorisationService, projectService, issueService, userService, paginationService) {
         
+        // Checking if user is admin
+        
+        $http.defaults.headers.common['Authorization'] = authorisationService.getAuthorisationToken();
+        
+        $scope.getCurrentUserInfo = userService.getCurrentUserInfo().$promise.then(function(response) {
+            $scope.isAdmin = response.isAdmin;
+            console.log($scope.isAdmin);
+        });
+        
+        
         $scope.goToDashboard = function () {
             $location.url('/');
         };
@@ -49,6 +59,11 @@ angular.module('issueTrackingSystemApp')
             $scope.currentProject.$promise, 
             $scope.currentProjectIssues.$promise
         ]).then(function() {
+            
+            // Checking if user is leader
+            if ($scope.currentProject.Lead.Username == $scope.currentUser.userName) {
+                $scope.isLead = true;
+            }
                         
             var convertToStringOfNames = function(arrayOfObjects) {
                 var names = '';

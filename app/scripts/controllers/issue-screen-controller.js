@@ -1,5 +1,5 @@
 angular.module('issueTrackingSystemApp')
-    .controller('IssueScreenController', ['$scope', '$routeParams', '$http', '$location', '$q', 'userService', 'issueService', 'authorisationService', function ($scope, $routeParams, $http, $location, $q, userService, issueService, authorisationService) {
+    .controller('IssueScreenController', ['$scope', '$routeParams', '$http', '$location', '$q', 'userService', 'issueService', 'projectService', 'authorisationService', function ($scope, $routeParams, $http, $location, $q, userService, issueService, projectService, authorisationService) {
 
         // Header information
 
@@ -31,6 +31,32 @@ angular.module('issueTrackingSystemApp')
         $scope.obtainData();
         
         $q.when($scope.currentIssue.$promise).then(function() {
+            
+            $scope.currentProject = projectService.getProjectById({
+                projectId: $scope.currentIssue.Project.Id
+            });
+            
+            $q.when($scope.currentProject.$promise).then(function () {
+                
+                // Checking if user is leader
+                
+                if ($scope.currentProject.Lead.Username == $scope.currentUser.userName) {
+                    $scope.isLead = true;
+                }
+                
+                // Checking if user is admin or assignee
+        
+                $scope.getCurrentUserInfo = userService.getCurrentUserInfo().$promise.then(function(response) {
+                    $scope.isAdmin = response.isAdmin;
+                    console.log($scope.isAdmin);
+                    
+                    if ($scope.currentIssue.Assignee.Username == response.Username) {
+                        $scope.isAssignee = true;
+                    }
+                    console.log($scope.isAssignee);
+                });
+                
+            });
             
             $scope.goToProject = function () {
                 $location.url('projects/' + $scope.currentIssue.Project.Id);
