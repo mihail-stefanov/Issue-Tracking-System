@@ -16,7 +16,7 @@ angular.module('issueTrackingSystemApp')
         $scope.logout = function() {
             authorisationService.logout();
             $location.url('/');
-        }
+        };
         
         // Obtaining the issue details
         

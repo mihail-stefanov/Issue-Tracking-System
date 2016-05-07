@@ -1,0 +1,67 @@
+<div class="template">
+    <!--   HEADINGS AND BUTTONS -->
+
+    <div class="w3-row">
+        <div class="w3-third w3-container">
+            <h2>Projects</h2>
+        </div>
+        <div class="w3-third w3-container">
+            <div class="w3-center w3-margin">
+                <span class="w3-margin w3-medium">{{userService.getCurrentUserCredentials().userName}}</span>
+            </div>
+        </div>
+        <div class="w3-third w3-container">
+            <p class="w3-small">
+                <span class="w3-small w3-right">
+                    <button ng-click="goToDashboard()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
+                        Dashboard
+                    </button>
+                    <button ng-click="addProject()" class="w3-btn w3-light-green w3-tiny w3-round-xxlarge">
+                        Add Project
+                    </button>
+                    <button ng-click="logout()" class="w3-btn w3-grey w3-tiny w3-round-xxlarge">
+                        Logout
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <!--    TABLE WITH THE PROJECTS    -->
+
+    <div class="w3-container">
+        <div class="w3-quarter w3-container"> &nbsp; </div>
+
+        <div class="w3-half w3-container">
+           
+            <table class="w3-container w3-table w3-bordered w3-striped w3-hoverable w3-card-4">
+                <tr>
+                    <th class="w3-container w3-dark-grey">
+                        <h3>Complete list</h3></th>
+                </tr>
+                <tr ng-repeat="project in projectDataSubset">
+                    <td ng-click="goToProject(project.Id)">{{project.Name}}</td>
+                </tr>
+                <tr ng-if="projectsEmpty">
+                    <td>There are currently no projects.</td>
+                </tr>
+            </table>
+            
+            <br>
+            
+        </div>
+
+        <div class="w3-center">
+            <ul class="w3-pagination w3-border">
+                <li ng-repeat="page in projectPages">
+                    <a ng-click="selectProjectPage($event)" value={{page.theNumber}} class={{page.w3Class}}>
+                        {{page.theNumber}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</div>
