@@ -38,7 +38,7 @@ angular.module('issueTrackingSystemApp')
             'http://softuni-issue-tracker.azurewebsites.net/issues/:issueId/changestatus', {}, {
                 update: {
                     method: 'PUT',
-                    isArray:true
+                    isArray: true
                 }
             }
         );
@@ -47,6 +47,15 @@ angular.module('issueTrackingSystemApp')
             'http://softuni-issue-tracker.azurewebsites.net/issues/:issueId', {}, {
                 update: {
                     method: 'PUT'
+                }
+            }
+        );
+        
+        var issueCommentsResource = $resource(
+            'http://softuni-issue-tracker.azurewebsites.net/issues/:issueId/comments', {}, {
+                query: {
+                    method: 'GET',
+                    isArray: true
                 }
             }
         );
@@ -74,6 +83,10 @@ angular.module('issueTrackingSystemApp')
             
             editIssue: function (params, dataToSend) {
                 return editIssueResource.update(params, dataToSend);
+            },
+            
+            getIssueComments: function (params, callback) {
+                return issueCommentsResource.query(params, callback);
             }
             
         }

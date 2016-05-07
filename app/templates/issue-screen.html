@@ -1,19 +1,19 @@
 <div class="template">
-   
-<!--   HEADINGS AND BUTTONS -->
 
-<div class="w3-row">
-    <div class="w3-third w3-container">
-        <h2>Issue Page</h2>
-    </div>
-    <div class="w3-third w3-container">
-        <div class="w3-center w3-margin">
-                <span class="w3-margin w3-medium">{{currentUser.userName}}</span>
+    <!--   HEADINGS AND BUTTONS -->
+
+    <div class="w3-row">
+        <div class="w3-third w3-container">
+            <h2>Issue Page</h2>
         </div>
-    </div>
-    <div class="w3-third w3-container">
-        <p class="w3-small">
-            <span class="w3-small w3-right">
+        <div class="w3-third w3-container">
+            <div class="w3-center w3-margin">
+                <span class="w3-margin w3-medium">{{currentUser.userName}}</span>
+            </div>
+        </div>
+        <div class="w3-third w3-container">
+            <p class="w3-small">
+                <span class="w3-small w3-right">
                 <button ng-click="goToDashboard()" class="w3-btn w3-indigo w3-tiny w3-round-xxlarge">
                     Dashboard
                 </button>
@@ -27,97 +27,146 @@
                     Logout
                 </button>
             </span>
-        </p>
+            </p>
+        </div>
     </div>
-</div>
-    
-<!--   TABLES WITH DATA   -->
-    
-    
-<div class="w3-row">
-    <div class="w3-third w3-container w3-margin">
 
-        <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
-        
+    <!--   TABLES WITH DATA   -->
+
+
+    <div class="w3-row">
+        <div class="w3-third w3-container w3-margin">
+
+            <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
+
+                <tr>
+                    <th colspan="2" class="w3-container w3-dark-grey">
+                        <h4>Details</h4></th>
+                </tr>
+                <tr>
+                    <th>Issue Key</th>
+                    <td>{{currentIssue.IssueKey}}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{currentIssue.Title}}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{currentIssue.Description}}</td>
+                </tr>
+                <tr>
+                    <th>Assignee ID</th>
+                    <td>{{currentIssue.Assignee.Id}}</td>
+                </tr>
+                <tr>
+                    <th>Assignee Username</th>
+                    <td>{{currentIssue.Assignee.Username}}</td>
+                </tr>
+                <tr>
+                    <th>Priority ID</th>
+                    <td>{{currentIssue.Priority.Id}}</td>
+                </tr>
+                <tr>
+                    <th>Priority Name</th>
+                    <td>{{currentIssue.Priority.Name}}</td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>{{currentIssue.Author.Username}}</td>
+                </tr>
+                <tr>
+                    <th>Project</th>
+                    <td>{{currentIssue.Project.Name}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{currentIssue.Status.Name}}</td>
+                </tr>
+                <tr>
+                    <th>Labels</th>
+                    <td>
+                        <span ng-repeat="label in currentIssue.Labels">{{label.Name}} <br></span>
+                    </td>
+                </tr>
+
+            </table>
+
+
+        </div>
+
+        <!--    STATUSES    -->
+
+        <div class="w3-third w3-container w3-margin">
+
+            <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
+                <tr>
+                    <th colspan="2" >Available statuses:</th>
+                </tr>
+                <tr ng-repeat="status in currentIssue.AvailableStatuses">
+                    <td>{{status.Name}}</td>
+                    <td>
+                        <button class="w3-btn w3-grey w3-tiny w3-round-xxlarge w3-right" ng-click="changeStatus(status.Id)">
+                            Change
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-show="currentIssue.AvailableStatuses.length == 0">
+                    <td colspan="2">
+                        There are currently no statuses available.
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!--    COMMENTS    -->
+
+    <div class="w3-container w3-margin">
+
+        <table class="w3-container w3-table w3-bordered w3-card-4 w3-small">
             <tr>
-                <th colspan="2" class="w3-container w3-dark-grey"><h4>Details</h4></th>
+                <th>Comments</th>
             </tr>
-            <tr>
-                <th>Issue Key</th>
-                <td>{{currentIssue.IssueKey}}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{currentIssue.Title}}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{currentIssue.Description}}</td>
-            </tr>
-            <tr>
-                <th>Assignee ID</th>
-                <td>{{currentIssue.Assignee.Id}}</td>
-            </tr>
-            <tr>
-                <th>Assignee Username</th>
-                <td>{{currentIssue.Assignee.Username}}</td>
-            </tr>
-            <tr>
-                <th>Priority ID</th>
-                <td>{{currentIssue.Priority.Id}}</td>
-            </tr>
-            <tr>
-                <th>Priority Name</th>
-                <td>{{currentIssue.Priority.Name}}</td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td>{{currentIssue.Author.Username}}</td>
-            </tr>
-            <tr>
-                <th>Project</th>
-                <td>{{currentIssue.Project.Name}}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{currentIssue.Status.Name}}</td>
-            </tr>
-            <tr>
-                <th>Labels</th>
+            <tr ng-repeat="comment in comments">
                 <td>
-                    <span ng-repeat="label in currentIssue.Labels">{{label.Name}} <br></span>
+                    <div class="w3-light-grey w3-round-xxlarge w3-padding w3-border">
+                        {{comment.Author.Username}} - {{comment.CreatedOn}}
+                    </div>
+                    <div class="w3-padding">
+                        {{comment.Text}}
+                    </div>
                 </td>
             </tr>
-
+            <tr ng-show="comments.length == 0">
+                <td>
+                    There are currently no comments available.
+                </td>
+            </tr>
         </table>
-        
-        
+
     </div>
     
+    <!--    ADD A COMMENT    -->
     
-    <div class="w3-third w3-container w3-margin">
-      
-        <table class="w3-container w3-table w3-bordered w3-striped w3-card-4 w3-small">
+    <div class="w3-container w3-margin">
+        <table class="w3-container w3-table w3-bordered w3-card-4 w3-small">
             <tr>
-                <th>Available statuses:</th>
+                <th>Add a comment</th>
             </tr>
-            <tr ng-repeat="status in currentIssue.AvailableStatuses">
-                <td> - {{status.Name}}</td>
+            <tr>
                 <td>
-                    <button class="w3-btn w3-grey w3-tiny w3-round-xxlarge" ng-click="changeStatus(status.Id)">
-                        Change
-                    </button>
+                    <input type="text" class="w3-input" placeholder="Enter your message here">
                 </td>
             </tr>
-            <tr ng-show="currentIssue.AvailableStatuses.length == 0">
+            <tr>
                 <td>
-                    There are currently no statuses available.
+                    <button class="w3-btn w3-orange w3-tiny w3-round-xxlarge">Send</button>
                 </td>
             </tr>
         </table>
-        
     </div>
-</div>
 
-    
 </div>

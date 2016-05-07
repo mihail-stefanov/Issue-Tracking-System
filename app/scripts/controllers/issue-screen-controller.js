@@ -44,6 +44,15 @@ angular.module('issueTrackingSystemApp')
                     $scope.obtainData();
                 });
             };
+            
+            
+            // Obtaining and showing issue comments
+            
+            $scope.comments = issueService.getIssueComments({
+                issueId: $scope.issueId
+            });
+            
+            
         });
         
 
