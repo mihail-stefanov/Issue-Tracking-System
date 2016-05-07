@@ -45,7 +45,7 @@
                     <tr>
                         <th>Name</th>
                         <td>
-                            <input type="text" ng-model="newProjectName">
+                            <input type="text" ng-model="newProjectName" ng-change="generateProjectKey(newProjectName)">
                         </td>
                     </tr>
                     <tr>

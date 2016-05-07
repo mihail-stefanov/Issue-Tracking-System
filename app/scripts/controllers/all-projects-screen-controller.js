@@ -51,6 +51,18 @@ angular.module('issueTrackingSystemApp')
 
 
             // Add new project modal
+            
+            $scope.generateProjectKey = function (newProjectName) {
+                var partials = newProjectName.split(/\s+/);
+                
+                var outputString = "";
+                
+                partials.forEach(function (partial) {
+                    outputString += partial.charAt(0);
+                });
+                
+                $scope.newProjectKey = outputString;
+            };
 
             $scope.fullUserCollection = userService.getAllUsers();
             $scope.currentUser = userService.getCurrentUserCredentials();
