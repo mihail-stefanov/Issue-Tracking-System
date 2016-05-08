@@ -1,6 +1,14 @@
 angular.module('issueTrackingSystemApp')
     .controller('AuthenticationController', ['$scope', '$rootScope', 'authorisationService', function ($scope, $rootScope, authorisationService) {
         
+        $scope.error = false;
+        $scope.success = false;
+        
+        $scope.hideNotifications = function() {
+            $scope.error = false;
+            $scope.success = false;
+        };
+
         $scope.login = function (userLoginData) {
             authorisationService.login(userLoginData,
                 function () {
@@ -10,6 +18,7 @@ angular.module('issueTrackingSystemApp')
                 },
                 function () {
                     console.log('User login failed!!!');
+                    $scope.error = true;
                 });
         };
         
@@ -27,6 +36,7 @@ angular.module('issueTrackingSystemApp')
                 },
                 function () {
                     console.log('Registration failed!!!');
+                    $scope.error = true;
                 })
         };
 }]);
